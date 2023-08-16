@@ -9,7 +9,6 @@ const SelectCountry = (props) => {
   const country = countriesFilter.map(item => {
     return `${item.flag} ${Object.keys(item.currencies)[0]} ${item.name.common}`
   })
-  console.log(country)
 
   if(loaded){
     return (

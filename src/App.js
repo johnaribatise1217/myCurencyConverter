@@ -16,16 +16,17 @@ function App() {
   } = useContext(CurrencyContext)
   // Get the exchange rate for a given currency pair
   const [resultCurrency , setResultCurrency] = useState(0)
-  const codeFromCurrency = fromCurrency.split("")[1]
-  const codeToCurrency = toCurrency.split("")[1]
+  const codeFromCurrency = fromCurrency.split(" ")[1]
+  const codeToCurrency = toCurrency.split(" ")[1]
+  console.log(resultCurrency)
 
-  useEffect(() =>{
-    if(firstAmount) {
+  useEffect(() => {
+    if (firstAmount){
       axios("https://api.freecurrencyapi.com/v1/latest", {
         params : {
-          apiKey: "fca_live_uO10ufXYgNjLq7QYYSRynQJFLq9kIZ6UTnRBmUBW",
+          apikey : "fca_live_uO10ufXYgNjLq7QYYSRynQJFLq9kIZ6UTnRBmUBW",
           base_currency : codeFromCurrency,
-          currencies : codeToCurrency,
+          currencies : codeToCurrency
         }
       })
       .then(response => setResultCurrency(response.data.data[codeToCurrency]))
